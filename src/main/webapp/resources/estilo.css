@@ -1,13 +1,13 @@
 .estilo {
     border: 2px solid;
-    color: blue;
+    color: floralwhite;
     border-radius: 15px;
     padding: 100px;
 }
 
 .campo {
     padding: 0px;
-    color: darkorange;
+    color: orange;
 }
 
 #rodape{
@@ -32,13 +32,13 @@
 /* Set gray background color and 100% height */
 .sidenav {
     padding-top: 20px;
-    background-color: #f1f1f1;
+    background-color: white;
     height: 100%;
 }
 
 /* Set black background color, white text and some padding */
 footer {
-    background-color: #555;
+    background-color: #550;
     color: white;
     padding: 15px;
 }

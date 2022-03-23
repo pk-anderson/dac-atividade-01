@@ -32,7 +32,7 @@ public class DependenteJDBC implements DependenteInterface {
     public void novoDependente(Dependente dependente) {
         try{
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO dependente (nome, dataDeNascimento) VALUES (?, ?)");
+                    "INSERT INTO dependent (nome, dataDeNascimento) VALUES (?, ?)");
             statement.setString(1, dependente.getNome());
             statement.setDate(2, java.sql.Date.valueOf(dependente.getDataDeNascimento()));
             statement.executeQuery();
@@ -47,7 +47,7 @@ public class DependenteJDBC implements DependenteInterface {
     public List<Dependente> todosDependentes() {
         try{
             List<Dependente> dependentes= new ArrayList<>();
-            ResultSet resultQuery = connection.prepareStatement( "SELECT * FROM dependente").executeQuery();
+            ResultSet resultQuery = connection.prepareStatement( "SELECT * FROM dependent").executeQuery();
 
             while ( resultQuery.next() ){
                 dependentes.add(converterDependentes(resultQuery));
@@ -77,7 +77,7 @@ public class DependenteJDBC implements DependenteInterface {
     public void excluirDependente(Dependente dependente) {
         try{
             PreparedStatement statement = connection.prepareStatement(
-                    "DELETE FROM dependente WHERE id=?");
+                    "DELETE FROM dependent WHERE id=?");
             statement.setInt(1, dependente.getId());
             statement.executeQuery();
         } catch (SQLException e){
@@ -90,7 +90,7 @@ public class DependenteJDBC implements DependenteInterface {
     public void atualizarDependente(Dependente dependente) {
         try{
             PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE dependente SET nome=?, dataDeNascimento=? WHERE id=?");
+                    "UPDATE dependent SET nome=?, dataDeNascimento=? WHERE id=?");
             statement.setString(1, dependente.getNome());
             statement.setDate(2, java.sql.Date.valueOf(dependente.getDataDeNascimento()));
             statement.setInt(3, dependente.getId());

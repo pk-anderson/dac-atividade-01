@@ -35,7 +35,7 @@ public class PessoaJDBC implements PessoasInterface {
     public List<Pessoa> todas() {
         try{
             List<Pessoa> pessoas= new ArrayList<>();
-            ResultSet resultQuery = connection.prepareStatement( "SELECT * FROM pessoa").executeQuery();
+            ResultSet resultQuery = connection.prepareStatement( "SELECT * FROM people").executeQuery();
             while ( resultQuery.next() ){
                 pessoas.add(converterPessoa(resultQuery));
             }
@@ -58,7 +58,7 @@ public class PessoaJDBC implements PessoasInterface {
     @Override
     public void nova(Pessoa pessoa) {
         try{
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Pessoa (nome, CPF) VALUES (?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO people (nome, CPF) VALUES (?, ?)");
 
             statement.setString(1, pessoa.getNome());
             statement.setString(2, pessoa.getCpf().valor());
@@ -72,7 +72,7 @@ public class PessoaJDBC implements PessoasInterface {
     @Override
     public void atualizar(Pessoa pessoa) {
         try{
-            PreparedStatement statement = connection.prepareStatement("UPDATE pessoa SET nome=? ,CPF=? WHERE id=?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE people SET nome=? ,CPF=? WHERE id=?");
             statement.setString(1, pessoa.getNome());
             statement.setString(2, pessoa.getCpf().valor());
             statement.setLong(3, pessoa.getId());
@@ -85,7 +85,7 @@ public class PessoaJDBC implements PessoasInterface {
     @Override
     public void excluir(Pessoa pessoa) {
         try{
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM pessoa WHERE id=?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM people WHERE id=?");
             statement.setLong(1, pessoa.getId());
             statement.executeQuery();
         } catch (SQLException e){
@@ -99,7 +99,7 @@ public class PessoaJDBC implements PessoasInterface {
             List<Pessoa> pessoa= new ArrayList<>();
 
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM pessoa WHERE CPF = ?");
+                    "SELECT * FROM people WHERE CPF = ?");
 
             statement.setString(1, cpf);
             statement.executeQuery();
@@ -122,7 +122,7 @@ public class PessoaJDBC implements PessoasInterface {
             List<Dependente> dependentes = new ArrayList<>();
 
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM pessoa_dependente pd INNER JOIN dependente d ON pd.id_dependente = d.id INNER JOIN pessoa p ON pd.id_pessoa = p.id WHERE p.id = ? ");
+                    "SELECT * FROM people_dependent pd INNER JOIN dependent d ON pd.id_dependente = d.id INNER JOIN people p ON pd.id_pessoa = p.id WHERE p.id = ? ");
 
             statement.setLong(1, idPessoa);
             statement.executeQuery();

@@ -1,20 +1,20 @@
-CREATE TABLE pessoa(
+CREATE TABLE people(
     id serial PRIMARY KEY,
-    nome VARCHAR(100),
+    name VARCHAR(100),
     CPF VARCHAR(11)
 );
 
-CREATE TABLE dependente(
+CREATE TABLE dependent(
     id serial PRIMARY KEY,
-    nome VARCHAR(11),
-    dataDeNascimento DATE
+    name VARCHAR(11),
+    birthDate DATE
 );
 
-CREATE TABLE pessoa_dependente(
-   id_pessoa INT,
-   id_dependente INT,
-   FOREIGN KEY (id_pessoa) REFERENCES pessoa(id) ON DELETE CASCADE,
-   FOREIGN KEY (id_dependente) REFERENCES dependente(id) ON DELETE CASCADE,
-   PRIMARY KEY(id_pessoa,id_dependente)
+CREATE TABLE people_dependent(
+   id_people INT,
+   id_dependent INT,
+   FOREIGN KEY (id_people) REFERENCES people(id) ON DELETE CASCADE,
+   FOREIGN KEY (id_dependent) REFERENCES dependent(id) ON DELETE CASCADE,
+   PRIMARY KEY(id_people,id_dependent)
 );
 
