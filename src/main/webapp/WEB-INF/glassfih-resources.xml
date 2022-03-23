@@ -26,8 +26,8 @@
 <!--        <property name="portNumber" value="5432"/>-->
 <!--        <property name="URL" value="jdbc:postgresql://host-banco:5432/atividade01"/>-->
         <property name="databaseName" value="atividade01"/>
-        <property name="User" value="jheycami"/>
-        <property name="Password" value="333"/>
+        <property name="User" value="allyson"/>
+        <property name="Password" value="666"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/pgadmin" object-type="user" pool-name="post-gre-sql_jpa_postgresPool"/>
